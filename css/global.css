@@ -1,0 +1,177 @@
+:root {
+  font-size: 60%;
+
+  --color-primary: #060606;
+  --color-secondary: #f2e394;
+
+  --color-text: #f2f2f2;
+  --color-text-light: #fafafa;
+  --color-text-dark: #060606;
+  --color-text-link: #342e8a;
+  --color-text-link-hover: #796e86;
+
+  --color-success: #2ecc71;
+  --color-error: #e74c3c;
+
+  --color-bg: #545454;
+
+  --color-white: #ffffff;
+  --color-black: #000000;
+
+  --color-button-disabled: #d9d9d9;
+}
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+html,
+body,
+#root {
+  height: 100vh;
+}
+
+html {
+  scroll-behavior: smooth;
+}
+
+#root {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+body {
+  background: var(--color-bg);
+  padding-top: 10px;
+  color: var(--color-text);
+}
+
+button {
+  cursor: pointer;
+  border: none;
+  border-radius: 6px;
+}
+
+body,
+button,
+input {
+  font: 400 1.6rem Robotto, sans-serif;
+}
+
+ul,
+ol {
+  list-style-type: none;
+}
+
+a {
+  text-decoration: none;
+  font-weight: bold;
+  transition: color 0.3s;
+  color: var(--color-text-link);
+  font-size: 1.7rem;
+}
+
+a:hover {
+  color: var(--color-text-link-hover);
+}
+
+header {
+  display: none;
+  background: var(--color-primary);
+  color: var(--color-text-light);
+  padding: 15px;
+
+  position: fixed;
+  top: 0;
+
+  z-index: 999999;
+}
+
+footer {
+  margin-top: 24px;
+}
+
+.container {
+  width: 90vw;
+  max-width: 1400px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+}
+
+.navbar {
+  display: flex;
+  align-items: center;
+}
+
+.navbar img {
+  width: 140px;
+  height: 50px;
+}
+
+.navbar ul {
+  list-style: none;
+
+  display: flex;
+  align-items: center;
+  justify-content: space-around;
+
+  flex: 4;
+}
+
+.navbar ul li {
+  margin: 0 10px;
+}
+
+.navbar ul li a {
+  color: var(--color-text-light);
+  font-weight: 400;
+}
+
+.navbar ul li a:hover {
+  font-weight: bold;
+}
+
+/* SCROLLBAR */
+::-webkit-scrollbar {
+  width: 10px;
+}
+
+::-webkit-scrollbar-track {
+  background: #e6e6e6;
+}
+
+::-webkit-scrollbar-thumb {
+  background: #888;
+  border-radius: 10px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: #555;
+}
+
+.align-left {
+  align-self: flex-start;
+}
+
+.margin-top-20 {
+  margin-top: 20px;
+}
+
+.padding-left-right-20 {
+  padding: 0 20px;
+}
+
+.align-self-right {
+  align-self: flex-end;
+}
+
+@media (min-width: 700px) {
+  :root {
+    font-size: 62.5%;
+  }
+}

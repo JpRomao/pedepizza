@@ -1,0 +1,10 @@
+<?php
+include_once './templates/head.php';
+?>
+
+<title>Admin</title>
+</head>
+
+<body>
+  <main></main>
+</body>
