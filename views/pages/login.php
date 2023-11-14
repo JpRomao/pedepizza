@@ -26,7 +26,7 @@
     </div>
   </main>
 
-  <script src="./js/login.js"></script>
+  <script src="<?php echo FULL_PATH . '/views/js/login.js' ?>"></script>
 </body>
 
 </html>

@@ -29,8 +29,21 @@ class View
     include_once 'views/templates/' . self::DEFAULT_FOOTER;
   }
 
-  public function renderWithoutLayout($fileName)
+  public function renderWithoutLayout($fileName = 'home')
   {
+    if (!file_exists('views/pages/' . $fileName . '.php')) {
+      if (file_exists('views/pages/admin/' . $fileName . '.php')) {
+        include_once 'views/pages/admin/' . $fileName . '.php';
+        return;
+      }
+
+      if (!file_exists('views/pages/404.php')) {
+        die('404 not found');
+      }
+
+      include_once 'views/pages/not-found.php';
+    }
+
     include_once 'views/pages/' . $fileName . '.php';
   }
 }

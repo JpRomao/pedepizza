@@ -14,4 +14,4 @@
   </main>
 </div>
 
-<script src="./js/index.js" type="module"></script>
+<script src="<?php echo FULL_PATH . '/views/js/home.js' ?>" type="module"></script>

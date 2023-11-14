@@ -1,4 +1,4 @@
-export const baseUrl = window.location.origin + "/tcc_polan/api"
+export const baseUrl = window.location.origin + "/pedepizza/api"
 
 export function removeLastLetter(str) {
   return str.slice(0, -1);
