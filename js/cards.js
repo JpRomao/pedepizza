@@ -1,3 +1,5 @@
+import { changeElementDisplayByWindowsWidth } from "./utils.js";
+
 function mountCard(cardInfo) {
   return `
     <div class="card" data-id=${cardInfo.id}>
@@ -49,4 +51,10 @@ export function setCards(cardsInfo) {
   cardsContainer.style.justifyContent = "flex-start";
 
   cardsSelection();
+
+  changeElementDisplayByWindowsWidth(cardsContainer)
+
+  window.addEventListener("resize", () => {
+    changeElementDisplayByWindowsWidth(cardsContainer)
+  });
 }

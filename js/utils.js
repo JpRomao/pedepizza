@@ -1,11 +1,13 @@
-export const baseUrl = "http://localhost/TCC_REAL_OFICIAL/api";
+export const baseUrl = window.location.origin + "/tcc_polan/api"
 
 export function removeLastLetter(str) {
   return str.slice(0, -1);
 }
 
-export function changeElementDisplayByWindowsWidth(element) {
-  const isGridNeeded = window.innerWidth > 768;
+export function isGridNeeded() {
+  return window.innerWidth > 1049;
+}
 
-  element.style.display = isGridNeeded ? "grid" : "flex";
+export function changeElementDisplayByWindowsWidth(element) {
+  element.style.display = isGridNeeded() ? "grid" : "flex";
 }

@@ -1,6 +1,5 @@
 import { selectedCardsIds } from "./cards.js";
 import { setItemsAtPage } from "./fetch.js";
-import { changeElementDisplayByWindowsWidth } from "./utils.js";
 
 export function nextButton(type = "ingredients") {
   const nextButtonElement = document.getElementById("nextBtn");
@@ -60,12 +59,6 @@ export function nextButton(type = "ingredients") {
       h2.innerHTML = "Selecione seus ingredientes";
 
       cardsContainer.style.justifyContent = "flex-start";
-    });
-
-    changeElementDisplayByWindowsWidth(cardsContainer);
-
-    window.addEventListener("resize", () => {
-      changeElementDisplayByWindowsWidth(cardsContainer);
     });
   });
 }
