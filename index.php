@@ -3,7 +3,8 @@ $autoload = function ($class) {
   if (file_exists($class . '.php')) {
     include_once $class . '.php';
   } else {
-    die('Class ' . $class . ' not found.');
+    include_once 'pages/404.php';
+    die();
   }
 };
 
