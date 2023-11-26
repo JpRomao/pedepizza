@@ -1,0 +1,74 @@
+@baseUrl = http://localhost/pedepizza/api
+
+# # @name test_get
+# GET {{baseUrl}}/test
+# Content-Type: application/json
+
+# ###
+
+# # @name test_post
+# POST {{baseUrl}}/test
+# Content-Type: application/json
+
+# {
+#   "name": "Teste"
+# }
+
+###
+
+# @name fetch_ingredients
+GET {{baseUrl}}/ingredients
+Content-Type: application/json
+
+###
+
+# @name fetch_pizzas_by_ingredients
+GET {{baseUrl}}/pizzas?ingredients[]=1&ingredients[]=3
+Content-Type: application/json
+
+###
+
+# @name create_ingredient
+POST {{baseUrl}}/ingredients
+Content-Type: application/json
+
+{
+  "name": "Alface",
+  "image": "alface.png"
+}
+
+###
+
+# @name create_pizza
+POST {{baseUrl}}/pizzas
+Content-Type: application/json
+
+{
+  "name": "Pizza Mista",
+  "ingredients": [
+    {
+      "id": "1",
+      "name": "Muçarela",
+      "image": "mucarela.jpg"
+    },
+    {
+      "id": "2",
+      "name": "Presunto",
+      "image": "presunto.jpg"
+    },
+    {
+      "id": "3",
+      "name": "Tomate",
+      "image": "tomate.jpg"
+    }
+  ],
+  "image": "mista.jpg",
+  "createdBy": "1"
+}
+
+###
+
+# @name find_pizzeria_by_pizza_id
+
+GET {{baseUrl}}/pizzerias?pizzaId=1
+Content-Type: application/json
