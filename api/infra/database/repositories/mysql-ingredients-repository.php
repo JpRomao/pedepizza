@@ -4,6 +4,7 @@ namespace Infra\Database\Repositories;
 
 use Application\Entities\Ingredient;
 use Application\Repositories\IngredientsRepository;
+use Core\Entities\UniqueEntityId;
 use PDO;
 
 class MysqlIngredientsRepository implements IngredientsRepository
@@ -30,6 +31,22 @@ class MysqlIngredientsRepository implements IngredientsRepository
     }
 
     return $ingredients;
+  }
+
+  public function findByName(string $name): Ingredient | null
+  {
+    $stmt = $this->db->prepare('SELECT id, name, image FROM ingredients WHERE name = :name');
+    $stmt->bindValue(':name', $name);
+
+    $stmt->execute();
+
+    $ingredient = $stmt->fetch(PDO::FETCH_ASSOC);
+
+    if (!$ingredient) {
+      return null;
+    }
+
+    return Ingredient::create($ingredient, new UniqueEntityId($ingredient['id']));
   }
 
   public function create(Ingredient $ingredient): void

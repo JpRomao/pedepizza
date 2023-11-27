@@ -5,6 +5,7 @@ namespace Infra\Http\Controllers;
 use PDO;
 use Exception;
 use Application\UseCases\CreateIngredientUseCase;
+use Application\UseCases\Errors\AlreadyExistsError;
 use Application\UseCases\Errors\FieldsMissingError;
 use Core\Response;
 use Infra\Database\Repositories\MysqlIngredientsRepository;
@@ -34,6 +35,10 @@ class CreateIngredientController extends Controller
       return new Response(201, null, 'Created successfully');
     } catch (Exception | FieldsMissingError $e) {
       if ($e instanceof FieldsMissingError) {
+        return new Response($e->getErrorCode(), null, $e::_getMessage());
+      }
+
+      if ($e instanceof AlreadyExistsError) {
         return new Response($e->getErrorCode(), null, $e::_getMessage());
       }
 

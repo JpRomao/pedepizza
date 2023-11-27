@@ -1,0 +1,18 @@
+Arquivo [utils.js] -> caminho: pages/js/utils.js
+
+mudar baseUrl para o correto se necessário
+
+###############################################################################################
+
+Arquivo [index.php] -> caminho: api/index.php
+
+mudar baseUrl para o correto se necessário
+
+mudar o nome do banco de dados para o correto se necessário
+mudar o usuário do banco de dados para o correto se necessário
+mudar a senha do banco de dados para o correto se necessário
+
+
+###############################################################################################
+
+rodar no banco de dados o arquivo [database.sql] -> caminho: /database.sql

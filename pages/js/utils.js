@@ -1,4 +1,4 @@
-export const baseUrl = window.location.origin + "/pedepizza"
+export const baseUrl = window.location.origin + "/pedepizza";
 export const apiUrl = `${baseUrl}/api`;
 
 export function removeLastLetter(str) {
