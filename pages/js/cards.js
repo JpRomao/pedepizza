@@ -29,26 +29,31 @@ function mountCard(cardInfo) {
   `;
 }
 
-export const selectedCardsIds = [];
+export const selectedIngredientCardsIds = [];
 
-export function cardsSelection() {
+export function ingredientCardsSelection() {
+  removeClickFromCards();
+
   const cards = document.querySelectorAll(".card");
   const nextButton = document.getElementById("nextBtn");
 
   cards.forEach((card) => {
     card.addEventListener("click", () => {
-      if (selectedCardsIds.includes(card.getAttribute("data-id"))) {
+      if (selectedIngredientCardsIds.includes(card.getAttribute("data-id"))) {
         card.classList.remove("selected");
 
-        selectedCardsIds.splice(selectedCardsIds.indexOf(card), 2);
+        selectedIngredientCardsIds.splice(
+          selectedIngredientCardsIds.indexOf(card),
+          2
+        );
 
-        if (selectedCardsIds.length < 1) {
+        if (selectedIngredientCardsIds.length < 1) {
           nextButton.classList.add("disabled");
         }
       } else {
         card.classList.add("selected");
 
-        selectedCardsIds.push(card.getAttribute("data-id"));
+        selectedIngredientCardsIds.push(card.getAttribute("data-id"));
 
         nextButton.classList.remove("disabled");
       }
@@ -67,11 +72,47 @@ export function setCards(cardsInfo) {
 
   cardsContainer.style.justifyContent = "flex-start";
 
-  cardsSelection();
-
   changeElementDisplayByWindowsWidth(cardsContainer);
 
   window.addEventListener("resize", () => {
     changeElementDisplayByWindowsWidth(cardsContainer);
+  });
+}
+
+export let selectedCard = null;
+
+export function selectCard() {
+  const cards = document.querySelectorAll(".card");
+
+  cards.forEach((card) => {
+    card.addEventListener("click", () => {
+      if (selectedCard && selectedCard !== card.getAttribute("data-id")) {
+        const selectedCardElement = document.querySelector(
+          `[data-id="${selectedCard}"]`
+        );
+
+        selectedCardElement.classList.remove("selected");
+
+        selectedCard = null;
+      }
+
+      if (selectedCard === card.getAttribute("data-id")) {
+        card.classList.remove("selected");
+
+        selectedCard = null;
+      } else {
+        card.classList.add("selected");
+
+        selectedCard = card.getAttribute("data-id");
+      }
+    });
+  });
+}
+
+export function removeClickFromCards() {
+  const pizzeriaCards = document.querySelectorAll(".card");
+
+  pizzeriaCards.forEach((pizzeriaCard) => {
+    pizzeriaCard.removeEventListener("click", () => {});
   });
 }

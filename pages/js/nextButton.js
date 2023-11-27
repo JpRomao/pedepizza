@@ -1,4 +1,4 @@
-import { selectedCardsIds } from "./cards.js";
+import { selectedIngredientCardsIds } from "./cards.js";
 import { setItemsAtPage, setPizzeria } from "./fetch.js";
 import { mountPizzeriaCard } from "./pizzeriaCard.js";
 import { baseUrl } from "./utils.js";
@@ -25,7 +25,7 @@ export function nextButton(type = "ingredients") {
   toPizzeriaButton.style.marginLeft = "18px";
 
   nextButtonElement.addEventListener("click", async () => {
-    if (selectedCardsIds.length < 1) {
+    if (selectedIngredientCardsIds.length < 1) {
       return;
     }
 

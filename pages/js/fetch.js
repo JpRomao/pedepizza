@@ -1,4 +1,10 @@
-import { selectedCardsIds, setCards } from "./cards.js";
+import {
+  ingredientCardsSelection,
+  selectCard,
+  selectedCard,
+  selectedIngredientCardsIds,
+  setCards,
+} from "./cards.js";
 import { nextButton } from "./nextButton.js";
 import { baseUrl, apiUrl } from "./utils.js";
 
@@ -25,14 +31,20 @@ async function fetchItems(type = "ingredients", hasReseted = false) {
   url += `/${type}?start=${start}&end=${end}`;
 
   if (type === "pizzas") {
-    for (let i = 0; i < selectedCardsIds.length; i++) {
-      url += `&ingredients[]=${selectedCardsIds[i]}`;
+    for (let i = 0; i < selectedIngredientCardsIds.length; i++) {
+      url += `&ingredients[]=${selectedIngredientCardsIds[i]}`;
     }
   } else if (type === "pizzerias") {
-    url += `&pizzaId=${selectedCardsIds[0]}`;
+    url += `&pizzaId=${selectedCard}`;
   }
 
   const response = await fetch(url);
+
+  if (response.status === 404) {
+    alert("Not found");
+
+    return null;
+  }
 
   const items = await response.json();
 
@@ -57,9 +69,15 @@ export async function setItemsAtPage(type = "ingredients", hasReseted = false) {
     };
   });
 
-  selectedCardsIds.length = 0;
+  selectedIngredientCardsIds.length = 0;
 
   setCards(items);
+
+  if (type === "ingredients") {
+    ingredientCardsSelection();
+  } else {
+    selectCard();
+  }
 
   nextButton("pizzas");
 

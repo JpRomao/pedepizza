@@ -6,7 +6,7 @@ export function mountPizzeriaCard(pizzeria, pizza) {
   const textUrlEncoded = encodeURI(text);
 
   return `
-      <div class="card" data-id=${pizzeria.id}>
+      <div class="card pizzeria-card" data-id=${pizzeria.id}>
         <img src="${baseUrl}/pages/assets/img/pizzerias/${pizzeria.image}" alt="${pizzeria.name}" width="200px" height="200px" />
 
         <div class="card-body">

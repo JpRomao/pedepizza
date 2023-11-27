@@ -1,11 +1,3 @@
-DROP DATABASE IF EXISTS pedepizza;
-
-CREATE DATABASE IF NOT EXISTS pedepizza;
-
-ALTER DATABASE pedepizza CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci;
-
-USE pedepizza;
-
 CREATE TABLE IF NOT EXISTS ingredients (
   id VARCHAR(255) PRIMARY KEY,
   name VARCHAR(255) NOT NULL,
