@@ -24,6 +24,8 @@ export function nextButton(type = "ingredients") {
   toPizzeriaButton.style.alignSelf = "flex-end";
   toPizzeriaButton.style.marginLeft = "18px";
 
+  let pizzeriaButtonInserted = false;
+
   nextButtonElement.addEventListener("click", async () => {
     if (selectedIngredientCardsIds.length < 1) {
       return;
@@ -51,6 +53,7 @@ export function nextButton(type = "ingredients") {
 
     if (items && items.length > 0) {
       nextButtonElement.insertAdjacentElement("afterend", toPizzeriaButton);
+      pizzeriaButtonInserted = true;
     }
 
     nextButtonElement.remove();
@@ -74,16 +77,18 @@ export function nextButton(type = "ingredients") {
       toPizzeriaButton.remove();
     });
 
-    toPizzeriaButton.addEventListener("click", async () => {
-      const { pizza, pizzeria } = await setPizzeria();
+    if (pizzeriaButtonInserted) {
+      toPizzeriaButton.addEventListener("click", async () => {
+        const { pizza, pizzeria } = await setPizzeria();
 
-      cardsContainer.innerHTML = "";
+        cardsContainer.innerHTML = "";
 
-      const pizzeriaCard = mountPizzeriaCard(pizzeria, pizza);
+        const pizzeriaCard = mountPizzeriaCard(pizzeria, pizza);
 
-      cardsContainer.innerHTML = pizzeriaCard;
+        cardsContainer.innerHTML = pizzeriaCard;
 
-      toPizzeriaButton.remove();
-    });
+        toPizzeriaButton.remove();
+      });
+    }
   });
 }
