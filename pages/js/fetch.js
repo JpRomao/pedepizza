@@ -60,14 +60,17 @@ async function fetchItems(type = "ingredients", hasReseted = false) {
 export async function setItemsAtPage(type = "ingredients", hasReseted = false) {
   const { data: searchedItems } = await fetchItems(type, hasReseted);
 
-  const items = searchedItems.map((item) => {
-    return {
-      ...item,
-      image: `${baseUrl}/pages/assets/img/${type}/${item.image}`,
-      ingredients: item.ingredients ? `${item.ingredients.join(", ")}` : null,
-      timeToPrepare: item.timeToPrepare ? `${item.timeToPrepare}` : null,
-    };
-  });
+  const items =
+    searchedItems &&
+    searchedItems.length > 0 &&
+    searchedItems.map((item) => {
+      return {
+        ...item,
+        image: `${baseUrl}/pages/assets/img/${type}/${item.image}`,
+        ingredients: item.ingredients ? `${item.ingredients.join(", ")}` : null,
+        timeToPrepare: item.timeToPrepare ? `${item.timeToPrepare}` : null,
+      };
+    });
 
   selectedIngredientCardsIds.length = 0;
 

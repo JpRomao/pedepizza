@@ -12,7 +12,9 @@ class FetchPizzasByIngredientsUseCase
 
   public function execute(array $ingredients, int $page = 1)
   {
-    $pizzas = $this->pizzasIngredientsRepository->findManyByIngredients($ingredients, $page) ?? [];
+    $pizzas = $this->pizzasIngredientsRepository->findManyByIngredients($ingredients, $page);
+
+    if (empty($pizzas)) return [];
 
     $pizzas = array_map(function ($pizza) {
       $pizza['ingredients'] = explode(',', $pizza['ingredients']);

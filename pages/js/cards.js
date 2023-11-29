@@ -66,6 +66,10 @@ export function setCards(cardsInfo) {
 
   cardsContainer.innerHTML = "";
 
+  if (!cardsInfo || cardsInfo.length < 1) {
+    return;
+  }
+
   cardsInfo.forEach((cardInfo) => {
     cardsContainer.innerHTML += mountCard(cardInfo);
   });
@@ -83,6 +87,10 @@ export let selectedCard = null;
 
 export function selectCard() {
   const cards = document.querySelectorAll(".card");
+
+  if (cards.length < 1) {
+    return;
+  }
 
   cards.forEach((card) => {
     card.addEventListener("click", () => {

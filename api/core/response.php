@@ -10,11 +10,11 @@ class Response
   {
     http_response_code($statusCode);
 
-    if ($message) {
+    if ($message !== null) {
       $this->status['message'] = $message;
     }
 
-    if ($data) {
+    if ($data !== null) {
       $this->status['data'] = $data;
     }
   }

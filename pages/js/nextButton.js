@@ -49,7 +49,10 @@ export function nextButton(type = "ingredients") {
 
     cardsContainer.style.justifyContent = "flex-start";
 
-    nextButtonElement.insertAdjacentElement("afterend", toPizzeriaButton);
+    if (items && items.length > 0) {
+      nextButtonElement.insertAdjacentElement("afterend", toPizzeriaButton);
+    }
+
     nextButtonElement.remove();
 
     backButton.addEventListener("click", async () => {
